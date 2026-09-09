@@ -16,12 +16,51 @@ Else
  
 Program:
 
-//type your code here
+#include <stdio.h>
+
+struct Person
+{
+    char name[50];
+    int age;
+};
+
+int main()
+{
+    struct Person p[10];
+    int n, i;
+
+    printf("Enter number of persons: ");
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++)
+    {
+        printf("\nEnter name: ");
+        scanf("%s", p[i].name);
+
+        printf("Enter age: ");
+        scanf("%d", &p[i].age);
+    }
+
+    printf("\n--- Vaccine Eligibility ---\n");
+
+    for (i = 0; i < n; i++)
+    {
+        printf("%s - Age %d: ", p[i].name, p[i].age);
+
+        if (p[i].age > 6)
+            printf("Eligible for vaccination\n");
+        else
+            printf("Not eligible for vaccination\n");
+    }
+
+    return 0;
+}
 
 
 Output:
 
-//paste your output here
+<img width="420" height="386" alt="image" src="https://github.com/user-attachments/assets/7afd7bfb-bd5e-4531-af75-da55c0f82c2a" />
+
 
 
 Result:
@@ -44,15 +83,56 @@ Algorithm:
  
 Program:
 
-//type your code here
+#include <stdio.h>
+
+struct Student
+{
+    char name[50];
+    int age;
+    float marks;
+};
+
+void display(struct Student s)
+{
+    printf("\nStudent Details:\n");
+    printf("Name  : %s\n", s.name);
+    printf("Age   : %d\n", s.age);
+    printf("Marks : %.2f\n", s.marks);
+}
+
+struct Student getStudent()
+{
+    struct Student s;
+
+    printf("Enter name: ");
+    scanf("%s", s.name);
+
+    printf("Enter age: ");
+    scanf("%d", &s.age);
+
+    printf("Enter marks: ");
+    scanf("%f", &s.marks);
+
+    return s;
+}
+
+int main()
+{
+    struct Student s;
+
+    s = getStudent();      
+
+    display(s);            
+
+    return 0;
+}
 
 
 
 
 Output:
 
-
-//paste your output here
+<img width="270" height="200" alt="image" src="https://github.com/user-attachments/assets/1be64438-e8af-4f21-9c1b-626b538d1de5" />
 
 
 
@@ -85,8 +165,31 @@ Use scanf to input the file name into the name array.
 5.	Return 0 to indicate successful program execution.
  
 Program:
+#include <stdio.h>
 
-//type your code here
+int main()
+{
+    char filename[100];
+    FILE *fp;
+
+    printf("Enter file name: ");
+    scanf("%s", filename);
+
+    fp = fopen(filename, "r");
+
+    if (fp == NULL)
+    {
+        printf("File does not exist.\n");
+    }
+    else
+    {
+        printf("File opened successfully.\n");
+        fclose(fp);
+    }
+
+    return 0;
+}
+
 
 
 
@@ -94,7 +197,10 @@ Program:
 Output:
 
 
-//paste your output here
+<img width="307" height="52" alt="image" src="https://github.com/user-attachments/assets/37413163-e028-4cb0-afef-1f756be1693b" />
+<img width="252" height="47" alt="image" src="https://github.com/user-attachments/assets/7fc5c392-7a94-460f-ab75-bd3c3190114d" />
+
+
 
 
 
@@ -132,8 +238,41 @@ Use scanf to input the file name into the name array and the number of strings i
 5.	Return 0 to indicate successful program execution.
  
 Program:
+```c
+#include <stdio.h>
 
-//type your code here
+int main()
+{
+    char filename[100];
+    char text[500];
+    FILE *fp;
+
+    printf("Enter file name: ");
+    scanf("%s", filename);
+
+    fp = fopen(filename, "w");
+
+    if (fp == NULL)
+    {
+        printf("Unable to create file.\n");
+        return 1;
+    }
+
+    printf("Enter text to write into the file: ");
+    getchar();
+    fgets(text, sizeof(text), stdin);
+
+    fprintf(fp, "%s", text);
+
+    fclose(fp);
+
+    printf("Text written to the file successfully.\n");
+
+    return 0;
+}
+```
+
+
 
 
 
@@ -141,7 +280,7 @@ Program:
 Output:
 
 
-//paste your output here
+<img width="805" height="127" alt="image" src="https://github.com/user-attachments/assets/ecead0ca-425e-4217-aad4-2a3deecb662e" />
 
 
 
@@ -186,8 +325,42 @@ Algorithm:
 13.End the program by returning 0.
 
 Program:
+```c
+#include <stdio.h>
 
-//type your code here
+struct Student
+{
+    char name[50];
+    int rollno;
+    int age;
+    float marks;
+};
+
+int main()
+{
+    struct Student s;
+
+    printf("Enter student name: ");
+    scanf("%s", s.name);
+
+    printf("Enter roll number: ");
+    scanf("%d", &s.rollno);
+
+    printf("Enter age: ");
+    scanf("%d", &s.age);
+
+    printf("Enter marks: ");
+    scanf("%f", &s.marks);
+
+    printf("\n--- Student Details ---\n");
+    printf("Name       : %s\n", s.name);
+    printf("Roll Number: %d\n", s.rollno);
+    printf("Age        : %d\n", s.age);
+    printf("Marks      : %.2f\n", s.marks);
+
+    return 0;
+}
+```
 
 
 
@@ -195,7 +368,8 @@ Program:
 Output:
 
 
-//paste your output here
+<img width="522" height="345" alt="image" src="https://github.com/user-attachments/assets/83aaa62f-887c-462b-8786-d396891653e2" />
+
 
 
 
